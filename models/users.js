@@ -23,6 +23,12 @@ const userSchema = new mongoose.Schema({
         default:[`student`],
         enum:[`student`,`teacher`,`admin`]
     },
+    picture:{
+        type:String
+    },
+    auth0Id:{
+        type:String
+    },
     refreshToken: {
         token: { 
             type: String, 
