@@ -60,7 +60,7 @@ async function generateRefreshToken(user){
 
 const signup = async(req, res) => {
 
-    const {name,email,password} = req.body;
+    const {name,email,password,role} = req.body;
 
     try{
       //Check for email if already exist
@@ -72,7 +72,7 @@ const signup = async(req, res) => {
       const saltedPassword = await bcrypt.hash(password,salt);
 
       //Add user to database
-      const newUser = await addNewUser({username:name,email,password:saltedPassword});
+      const newUser = await addNewUser({username:name,email,password:saltedPassword,roles:[`${role}`]});
 
       return apiResponse.successResponseWithData(res,"Account Created Successfully !",newUser)
 
